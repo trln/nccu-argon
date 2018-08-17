@@ -1,0 +1,74 @@
+---
+
+- name: Install Blacklight Dependancies
+
+  hosts: all
+  vars:
+    ruby_version: "2.4.2"
+    rails_version: "5.2.0"
+
+  tasks:
+
+    - name: Install git
+      yum: pkg=git state=present
+      become: true
+
+    - name: Install Java
+      yum: pkg=java-1.8.0-openjdk
+      become: true
+
+    - name: Ensure necessary packages are installed
+      yum:
+        name: "{{ item }}"
+        state: present
+      with_items:
+      - curl
+      - gnupg2
+
+    - name: Install GPG key for RVM
+      shell: curl -sSL https://rvm.io/mpapis.asc | gpg --import -
+      args:
+        warn: false
+
+    - name: Install rvm
+      shell: curl -sSL https://get.rvm.io | bash -s stable
+      args:
+        warn: false
+
+    - name: Install Ruby
+      shell: bash -lc "rvm install {{ ruby_version }}"
+      args:
+        warn: false
+
+    - name: Set default version of ruby with rvm
+      command: bash -lc "rvm use {{ ruby_version }} --default"
+      args:
+        warn: false
+
+    - name: Install Rails
+      command: bash -lc "gem install rails -v {{ rails_version }}"
+      args:
+        warn: false
+
+    - name: Install Bundler
+      command: bash -lc "gem install bundler"
+      args:
+        warn: false
+
+    - name: bundle update
+      shell: bash -lc "bundle update"
+      args:
+        chdir: "unc_blacklight"
+
+    - name: generate trln_argon:install
+      shell: bash -lc "bundle exec rails generate trln_argon:install"
+      args:
+        chdir: "unc_blacklight"
+
+    - name: rake db:migrate
+      shell: bash -lc "bundle exec rake db:migrate"
+      args:
+        chdir: "unc_blacklight"
+
+
+
