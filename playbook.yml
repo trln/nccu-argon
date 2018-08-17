@@ -55,6 +55,10 @@
       args:
         warn: false
 
+    - name: Install Node.js
+      yum: pkg=nodejs state=present enablerepo='epel'
+      become: true    
+
     # - name: bundle update
     #   shell: bash -lc "bundle update"
     #   args:
