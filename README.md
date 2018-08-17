@@ -10,20 +10,11 @@
 
 2. Clone this repository
 
-3. `cd TRLN_Discovery_UNC`
+3. `cd trln-rails`
 
 4. `vagrant up`
 
-5. `vagrant ssh` -> `cd /vagrant` -> `cd unc_blacklight`
+5. `vagrant ssh` -> `cd /vagrant` -> `cd trln-rails`
 
 
-## Start up your application:
-
- `bundle exec puma -d`
-
-Visit the catalog at http://localhost:3005/catalog.
-
-
-## Solr:
-
-You should be able to navigate to Solr at https://query.discovery.trln.org/#/trlnbib/query
+You should be able to navigate to http://localhost:3005/catalog.
