@@ -14,7 +14,4 @@
 
 4. `vagrant up`
 
-5. `vagrant ssh` -> `cd /vagrant` -> `cd trln-rails`
-
-
-You should be able to navigate to http://localhost:3005/catalog.
+5. `vagrant ssh` -> `cd /vagrant`

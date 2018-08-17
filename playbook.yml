@@ -55,20 +55,20 @@
       args:
         warn: false
 
-    - name: bundle update
-      shell: bash -lc "bundle update"
-      args:
-        chdir: "unc_blacklight"
+    # - name: bundle update
+    #   shell: bash -lc "bundle update"
+    #   args:
+    #     chdir: "unc_blacklight"
 
-    - name: generate trln_argon:install
-      shell: bash -lc "bundle exec rails generate trln_argon:install"
-      args:
-        chdir: "unc_blacklight"
+    # - name: generate trln_argon:install
+    #   shell: bash -lc "bundle exec rails generate trln_argon:install"
+    #   args:
+    #     chdir: "unc_blacklight"
 
-    - name: rake db:migrate
-      shell: bash -lc "bundle exec rake db:migrate"
-      args:
-        chdir: "unc_blacklight"
+    # - name: rake db:migrate
+    #   shell: bash -lc "bundle exec rake db:migrate"
+    #   args:
+    #     chdir: "unc_blacklight"
 
 
 

@@ -79,9 +79,9 @@ Vagrant.configure("2") do |config|
 
 
   # Rails
-  config.vm.network "forwarded_port", guest: 3000, host: 3005
+  config.vm.network "forwarded_port", guest: 3000, host: 3001
   # Solr
-  config.vm.network "forwarded_port", guest: 8983, host: 8985
+  config.vm.network "forwarded_port", guest: 8983, host: 8981
 
 
 end
