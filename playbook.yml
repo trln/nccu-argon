@@ -19,14 +19,11 @@
 
     - name: Ensure necessary packages are installed
       yum:
-        name: "{{ item }}"
+        name: ['curl', 'gnupg2']
         state: present
-      with_items:
-      - curl
-      - gnupg2
 
     - name: Install GPG key for RVM
-      shell: curl -sSL https://rvm.io/mpapis.asc | gpg --import -
+      shell: gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
       args:
         warn: false
 
