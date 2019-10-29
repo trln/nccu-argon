@@ -4,7 +4,7 @@
 
   hosts: all
   vars:
-    ruby_version: "2.4.2"
+    ruby_version: "2.5.0"
     rails_version: "5.2.1"
 
   tasks:
@@ -45,13 +45,7 @@
     - name: Install Bundler
       command: bash -lc "gem install bundler"
       args:
-        warn: false
-
-
-    - name: gem install sprockets
-      command: bash -lc "gem install sprockets -v 3.7.2"
-      args:
-        warn: false  
+        warn: false 
 
     - name: Install Rails
       command: bash -lc "gem install rails -v {{ rails_version }}"
